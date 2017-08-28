@@ -9,7 +9,7 @@ program
   .option("-c, --cert <path>", "(required) cert file path")
   .option("-k, --key <path>", "(required) key file path")
   .option(
-    "-p, --port",
+    "-p, --port <number>",
     "(optional) listening port number. default 443",
     parseInt
   )
@@ -33,13 +33,15 @@ Promise.all([
   new Promise((res, rej) =>
     fs.readFile(program.key, (e, d) => (e ? rej(e) : res(d)))
   )
-]).then(results => {
-  https
-    .createServer({ cert: results[0], key: results[1] }, (req, res) => {
-      res.writeHead(200, {
-        "Content-Type": "text/plain"
-      });
-      res.end("Hello, world\n");
-    })
-    .listen(port);
-});
+])
+  .then(results => {
+    https
+      .createServer({ cert: results[0], key: results[1] }, (req, res) => {
+        res.writeHead(200, {
+          "Content-Type": "text/plain"
+        });
+        res.end("Hello, world\n");
+      })
+      .listen(port);
+  })
+  .catch(console.error);
