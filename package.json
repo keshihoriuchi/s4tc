@@ -1,0 +1,23 @@
+{
+  "name": "s4tc",
+  "version": "0.0.1",
+  "description": "HTTPS server invoked from command line for testing cert files by accessing browser",
+  "bin": { "s4tc": "bin/s4tc.js" },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/keshihoriuchi/s4tc.git"
+  },
+  "author": "Takeshi Horiuchi",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.11.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.5.0",
+    "eslint-config-prettier": "^2.3.0",
+    "prettier": "^1.5.3"
+  }
+}
